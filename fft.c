@@ -1,5 +1,7 @@
 #include <fft.h>
 
+/* FROM ROSETTA CODE */
+/* Function calculating FFT recursively for signals with size 2*N */
 void _fft(complex_t signal[], complex_t out[], double sin_table[], double cos_table[], int n, int step)
 {
 	if (step < n) {
@@ -17,6 +19,8 @@ void _fft(complex_t signal[], complex_t out[], double sin_table[], double cos_ta
 	}
 }
 
+/* FROM ROSETTA CODE */
+/* FFT wrapper function */
 void fft(complex_t signal[], int n)
 {
 	complex_t * out = malloc(n * sizeof(complex_t));
@@ -34,6 +38,8 @@ void fft(complex_t signal[], int n)
 	free(out);
 }
 
+/* FROM ROSETTA CODE */
+/* Function calculating inverse FFT */
 void ifft(complex_t buf[], int n) {
 
 	for (int i = 0; i < n; i++)
@@ -48,6 +54,7 @@ void ifft(complex_t buf[], int n) {
 	}
 }
 
+/* Function calculating magnitudes from signal samples */
 void magnitude(complex_t fft[], int n) {
 
 	for (int i = 0; i < n; i++) {

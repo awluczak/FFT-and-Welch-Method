@@ -1,5 +1,6 @@
 #include <welch.h>
 
+/* Function adding pseudorandom noise to given signal */
 void noise(complex_t signal[], int n, double amplitude){
 
 	double * noise = malloc(n * sizeof(double));
@@ -14,6 +15,8 @@ void noise(complex_t signal[], int n, double amplitude){
 	return;
 }
 
+
+/* Function estimating signal's spectrum density using Welch's method */
 int welch(complex_t signal[], int n, int n_welch) {
 
 	//segments count 
@@ -47,6 +50,7 @@ int welch(complex_t signal[], int n, int n_welch) {
 	return 0;
 }
 
+/* Function splitting signal into segments in time domain */
 void _welch_split(complex_t signal[], complex_t ** segment, int n_welch, int count) {
 
 	//assign each value in segment array
@@ -63,6 +67,7 @@ void _welch_split(complex_t signal[], complex_t ** segment, int n_welch, int cou
 	return;
 }
 
+/* Function calculating FFT for each signal segment and averaging spectrograms */
 void _welch_fft_average(complex_t ** segment, complex_t result[], int n_welch, int count) {
 
 	//clear signal table
@@ -102,6 +107,7 @@ void _welch_fft_average(complex_t ** segment, complex_t result[], int n_welch, i
 	return;
 }
 
+/* Function creating Hamming's window for better spectrum estimation result */
 void _hamming(double window[], int n) {
 
 	//calulate hamming window a0 - a1*cos(2PI*k/(n-1))
